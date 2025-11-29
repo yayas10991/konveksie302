@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bima ID - Blog Teknologi dan Informasi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        :root {
+            --primary: #0066cc;
+            --secondary: #0052a3;
+            --accent: #ff6b6b;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --border: #e9ecef;
+            --text: #333;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-main {
+            padding: 20px 0;
+        }
+
+        .header-main .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background-color: var(--light);
+            border-radius: 4px;
+            padding: 8px 15px;
+            width: 220px;
+        }
+
+        .search-bar input {
+            border: none;
+            background: none;
+            outline: none;
+            padding: 5px;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .search-bar button {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: var(--gray);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+
+        .breadcrumb span {
+            color: var(--gray);
+            margin: 0 8px;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            margin-bottom: 60px;
+            gap: 40px;
+        }
+
+        .content-area {
+            flex: 3;
+        }
+
+        .sidebar {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border);
+            color: var(--dark);
+        }
+
+        /* Post Grid */
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .post-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+        }
+
+        .post-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .post-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .post-card:hover .post-img img {
+            transform: scale(1.05);
+        }
+
+        .post-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        .post-category {
+            background-color: var(--primary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .post-date {
+            display: flex;
+            align-items: center;
+        }
+
+        .post-date i {
+            margin-right: 5px;
+        }
+
+        .post-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.3;
+            color: var(--dark);
+        }
+
+        .post-title a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        .post-title a:hover {
+            color: var(--primary);
+        }
+
+        .post-excerpt {
+            color: var(--gray);
+            margin-bottom: 15px;
+            flex: 1;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            transition: margin-left 0.3s;
+        }
+
+        .read-more:hover {
+            margin-left: 5px;
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            font-size: 12px;
+        }
+
+        /* Sidebar */
+        .sidebar-widget {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .widget-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+            color: var(--dark);
+        }
+
+        .widget ul {
+            list-style: none;
+        }
+
+        .widget ul li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .widget ul li:last-child {
+            border-bottom: none;
+        }
+
+        .widget ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .widget ul li a:hover {
+            color: var(--primary);
+        }
+
+        .widget ul li a span {
+            background-color: var(--light);
+            color: var(--gray);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Popular Posts */
+        .popular-post {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .popular-post:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .popular-post-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .popular-post-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .popular-post-content {
+            flex: 1;
+        }
+
+        .popular-post-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            line-height: 1.3;
+        }
+
+        .popular-post-title a {
+            text-decoration: none;
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+
+        .popular-post-title a:hover {
+            color: var(--primary);
+        }
+
+        .popular-post-meta {
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        /* Tag Cloud */
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag-cloud a {
+            background-color: var(--light);
+            color: var(--dark);
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .tag-cloud a:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .newsletter h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 25px;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .newsletter-form button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #ff5252;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .footer-column p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-main .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            nav {
+                width: 100%;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+                background-color: white;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                z-index: 100;
+                display: none;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                border-bottom: 1px solid var(--border);
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 15px 20px;
+            }
+            
+            .search-bar {
+                width: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .post-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .newsletter-form input,
+            .newsletter-form button {
+                border-radius: 4px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-main">
+            <div class="container">
+                <a href="#" class="logo">
+                    <i class="fas fa-laptop-code"></i> Bima ID
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav>
+                    <ul id="mainMenu">
+                        <li><a href="#">Beranda</a></li>
+                        <li><a href="#">Teknologi</a></li>
+                        <li><a href="#">Programming</a></li>
+                        <li><a href="#">Review</a></li>
+                        <li><a href="#">Tutorial</a></li>
+                        <li><a href="#">Kontak</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Cari artikel...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Portal Teknologi & Informasi Terpercaya</h1>
+            <p>Temukan artikel terbaru seputar teknologi, programming, review gadget, dan tutorial informatif untuk meningkatkan pengetahuan digital Anda</p>
+            <a href="#" class="btn">Jelajahi Artikel</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="#">Beranda</a>
+            <span>/</span>
+            <a href="#">Artikel Terbaru</a>
+        </div>
+        
+        <div class="main-content">
+            <!-- Content Area -->
+            <div class="content-area">
+                <h2 class="section-title">Artikel Terbaru</h2>
+                
+                <div class="post-grid">
+                    <!-- Post 1 -->
+                    <article class="post-card">
+                        <div class="post-img">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Artikel 1">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-category">Teknologi</span>
+                                <div class="post-date">
+                                    <i class="far fa-calendar"></i> 20 Oktober 2023
+                                </div>
+                            </div>
+                            <h3 class="post-title"><a href="#">5 Tren Teknologi Artificial Intelligence yang Akan Mendominasi 2024</a></h3>
+                            <p class="post-excerpt">AI terus berkembang dengan pesat. Berikut adalah 5 tren teknologi AI yang diprediksi akan mendominasi industri teknologi pada tahun 2024...</p>
+                            <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 2 -->
+                    <article class="post-card">
+                        <div class="post-img">
+                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Artikel 2">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-category">Programming</span>
+                                <div class="post-date">
+                                    <i class="far fa-calendar"></i> 18 Oktober 2023
+                                </div>
+                            </div>
+                            <h3 class="post-title"><a href="#">Panduan Lengkap Belajar Python untuk Pemula</a></h3>
+                            <p class="post-excerpt">Python adalah salah satu bahasa pemrograman yang paling populer saat ini. Artikel ini akan membahas dasar-dasar Python untuk pemula...</p>
+                            <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 3 -->
+                    <article class="post-card">
+                        <div class="post-img">
+                            <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Artikel 3">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-category">Review</span>
+                                <div class="post-date">
+                                    <i class="far fa-calendar"></i> 15 Oktober 2023
+                                </div>
+                            </div>
+                            <h3 class="post-title"><a href="#">Review iPhone 15 Pro Max: Apa yang Baru?</a></h3>
+                            <p class="post-excerpt">Apple kembali meluncurkan flagship terbaru mereka. Simak review lengkap iPhone 15 Pro Max dengan segala fitur unggulannya...</p>
+                            <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 4 -->
+                    <article class="post-card">
+                        <div class="post-img">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Artikel 4">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-category">Tutorial</span>
+                                <div class="post-date">
+                                    <i class="far fa-calendar"></i> 12 Oktober 2023
+                                </div>
+                            </div>
+                            <h3 class="post-title"><a href="#">Cara Membuat Website Profesional dengan HTML dan CSS</a></h3>
+                            <p class="post-excerpt">Ingin membuat website sendiri? Tutorial ini akan memandu Anda langkah demi langkah membuat website profesional dengan HTML dan CSS...</p>
+                            <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 5 -->
+                    <article class="post-card">
+                        <div class="post-img">
+                            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Artikel 5">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-category">Teknologi</span>
+                                <div class="post-date">
+                                    <i class="far fa-calendar"></i> 10 Oktober 2023
+                                </div>
+                            </div>
+                            <h3 class="post-title"><a href="#">Masa Depan Blockchain di Berbagai Industri</a></h3>
+                            <p class="post-excerpt">Blockchain tidak hanya untuk cryptocurrency. Teknologi ini memiliki potensi besar untuk mengubah berbagai industri di masa depan...</p>
+                            <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <!-- Post 6 -->
+                    <article class="post-card">
+                        <div class="post-img">
+                            <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Artikel 6">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-category">Programming</span>
+                                <div class="post-date">
+                                    <i class="far fa-calendar"></i> 8 Oktober 2023
+                                </div>
+                            </div>
+                            <h3 class="post-title"><a href="#">Framework JavaScript Terbaik untuk Tahun 2024</a></h3>
+                            <p class="post-excerpt">JavaScript terus berkembang dengan banyak framework baru. Berikut adalah framework JavaScript terbaik yang patut Anda pelajari...</p>
+                            <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Categories Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Kategori</h3>
+                    <ul>
+                        <li><a href="#">Teknologi <span>42</span></a></li>
+                        <li><a href="#">Programming <span>38</span></a></li>
+                        <li><a href="#">Review <span>25</span></a></li>
+                        <li><a href="#">Tutorial <span>32</span></a></li>
+                        <li><a href="#">Gadget <span>18</span></a></li>
+                        <li><a href="#">Software <span>15</span></a></li>
+                    </ul>
+                </div>
+                
+                <!-- Popular Posts Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Artikel Populer</h3>
+                    <div class="popular-post">
+                        <div class="popular-post-img">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Popular 1">
+                        </div>
+                        <div class="popular-post-content">
+                            <h4 class="popular-post-title"><a href="#">Cara Membuat Website Profesional dengan HTML dan CSS</a></h4>
+                            <div class="popular-post-meta">
+                                <i class="far fa-eye"></i> 5,420 views
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popular-post">
+                        <div class="popular-post-img">
+                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Popular 2">
+                        </div>
+                        <div class="popular-post-content">
+                            <h4 class="popular-post-title"><a href="#">Panduan Lengkap Belajar Python untuk Pemula</a></h4>
+                            <div class="popular-post-meta">
+                                <i class="far fa-eye"></i> 4,890 views
+                            </div>
+                        </div>
+                    </div>
+                    <div class="popular-post">
+                        <div class="popular-post-img">
+                            <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Popular 3">
+                        </div>
+                        <div class="popular-post-content">
+                            <h4 class="popular-post-title"><a href="#">Review iPhone 15 Pro Max: Apa yang Baru?</a></h4>
+                            <div class="popular-post-meta">
+                                <i class="far fa-eye"></i> 3,760 views
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tags Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Tag Populer</h3>
+                    <div class="tag-cloud">
+                        <a href="#">JavaScript</a>
+                        <a href="#">Python</a>
+                        <a href="#">Web Development</a>
+                        <a href="#">AI</a>
+                        <a href="#">Machine Learning</a>
+                        <a href="#">React</a>
+                        <a href="#">Node.js</a>
+                        <a href="#">CSS</a>
+                        <a href="#">HTML</a>
+                        <a href="#">Programming</a>
+                    </div>
+                </div>
+                
+                <!-- Newsletter Widget -->
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">Newsletter</h3>
+                    <p>Dapatkan artikel terbaru langsung di inbox Anda</p>
+                    <form class="newsletter-form" style="margin-top: 15px;">
+                        <input type="email" placeholder="Email Anda">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </aside>
+        </div>
+        
+        <!-- Newsletter Section -->
+        <div class="newsletter">
+            <h3>Newsletter Kami</h3>
+            <p>Bergabunglah dengan newsletter kami untuk mendapatkan update terbaru seputar teknologi dan programming</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Masukkan email Anda">
+                <button type="submit">Berlangganan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Tentang Bima ID</h3>
+                    <p>Bima ID adalah portal teknologi dan informasi yang menyajikan artikel terkini seputar teknologi, programming, review gadget, dan tutorial informatif untuk meningkatkan pengetahuan digital Anda.</p>
+                    <div class="social-links" style="margin-top: 20px;">
+                        <a href="#" style="color: white; margin-right: 15px; font-size: 18px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="color: white; margin-right: 15px; font-size: 18px;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: white; margin-right: 15px; font-size: 18px;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: white; margin-right: 15px; font-size: 18px;"><i class="fab fa-youtube"></i></a>
+                        <a href="#" style="color: white; font-size: 18px;"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Menu Cepat</h3>
+                    <ul>
+                        <li><a href="#">Beranda</a></li>
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Kategori</a></li>
+                        <li><a href="#">Kontak</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Kategori</h3>
+                    <ul>
+                        <li><a href="#">Teknologi</a></li>
+                        <li><a href="#">Programming</a></li>
+                        <li><a href="#">Review</a></li>
+                        <li><a href="#">Tutorial</a></li>
+                        <li><a href="#">Gadget</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Kontak Kami</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Jakarta, Indonesia</p>
+                    <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@bima-id.com</p>
+                    <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +62 812 3456 7890</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Bima ID. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainMenu = document.getElementById('mainMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const menuLinks = document.querySelectorAll('#mainMenu a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainMenu.classList.remove('active');
+            });
+        });
+        
+        // Newsletter Forms
+        const newsletterForms = document.querySelectorAll('.newsletter-form');
+        newsletterForms.forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = e.target.querySelector('input[type="email"]').value;
+                if(email) {
+                    alert('Terima kasih! Anda telah berlangganan newsletter kami.');
+                    e.target.reset();
+                }
+            });
+        });
+        
+        // Search Form
+        const searchBar = document.querySelector('.search-bar');
+        searchBar.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const searchTerm = e.target.querySelector('input').value;
+            if(searchTerm) {
+                alert(`Mencari: ${searchTerm}`);
+                e.target.reset();
+            }
+        });
+    </script>
+</body>
+</html>
